@@ -11,7 +11,7 @@ public static class Profiles
     /// <param name="cuenta">Cuenta</param>
     /// <param name="password">Contraseña</param>
     /// <param name="app">App de contexto</param>
-    public async static Task<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
+    public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
     {
 
         // Crear HttpClient
@@ -36,7 +36,7 @@ public static class Profiles
             // Leer la respuesta como una cadena
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>>(responseBody);
+            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>(responseBody);
 
             return obj ?? new();
 
@@ -61,7 +61,7 @@ public static class Profiles
     /// Login
     /// </summary>
     /// <param name="token">Token de acceso</param>
-    public async static Task<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>> Login(string token)
+    public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string token)
     {
 
         // Crear HttpClient
@@ -85,7 +85,7 @@ public static class Profiles
             // Leer la respuesta como una cadena
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Auth.Abstracts.AuthModel<ProfileModel>>>(responseBody);
+            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>(responseBody);
 
             return obj ?? new();
 

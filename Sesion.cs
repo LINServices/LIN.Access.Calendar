@@ -1,4 +1,5 @@
 ﻿using LIN.Access.Calendar.Controllers;
+using LIN.Types.Cloud.Identity.Models;
 
 namespace LIN.Access.Calendar;
 
@@ -29,7 +30,7 @@ public sealed class Session
     /// <summary>
     /// Si la sesión es activa
     /// </summary>
-    public static bool IsAccountOpen { get => Instance.Account.ID > 0; }
+    public static bool IsAccountOpen { get => Instance.Account.Id > 0; }
 
 
 
