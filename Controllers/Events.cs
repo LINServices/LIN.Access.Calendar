@@ -35,7 +35,7 @@ public static class Events
     {
 
         // Cliente HTTP.
-        Client client = Service.GetClient("events");
+        Client client = Service.GetClient("events/all");
 
         // Headers.
         client.AddHeader("token", token);
