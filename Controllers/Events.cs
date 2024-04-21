@@ -12,42 +12,16 @@ public static class Events
     public async static Task<CreateResponse> Create(string token, EventModel modelo)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente HTTP.
+        Client client = Service.GetClient("events");
 
+        // Headers.
+        client.AddHeader("token", token);
+        // Resultado.
+        var Content = await client.Post<CreateResponse>(modelo);
 
-        httpClient.DefaultRequestHeaders.Add("token", token);
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("events");
-        var json = JsonSerializer.Serialize(modelo);
-
-        try
-        {
-            // Contenido
-            StringContent content = new(json, Encoding.UTF8, "application/json");
-
-            // Envía la solicitud
-            var response = await httpClient.PostAsync(url, content);
-
-            // Lee la respuesta del servidor
-            var responseContent = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<CreateResponse>(responseContent);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        // Retornar.
+        return Content;
 
     }
 
@@ -60,39 +34,17 @@ public static class Events
     public async static Task<ReadAllResponse<EventModel>> ReadAll(string token)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente HTTP.
+        Client client = Service.GetClient("events");
 
-        httpClient.DefaultRequestHeaders.Add("token", token);
+        // Headers.
+        client.AddHeader("token", token);
 
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("events/all");
+        // Resultado.
+        var Content = await client.Get<ReadAllResponse<EventModel>>();
 
-        try
-        {
-
-            // Hacer la solicitud GET
-            var response = await httpClient.GetAsync(url);
-
-            // Leer la respuesta como una cadena
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadAllResponse<EventModel>>(responseBody);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        // Retornar.
+        return Content;
 
     }
 

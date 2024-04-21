@@ -14,44 +14,18 @@ public static class Profiles
     public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente HTTP.
+        Client client = Service.GetClient("profile/login");
 
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("profile/login");
+        // Params.
+        client.AddParameter("user", cuenta);
+        client.AddParameter("password", password);
 
+        // Resultado.
+        var Content = await client.Get<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>();
 
-        url = Web.AddParameters(url, new(){
-            {"user", cuenta },
-             {"password", password }
-        });
-
-
-        try
-        {
-
-            // Hacer la solicitud GET
-            var response = await httpClient.GetAsync(url);
-
-            // Leer la respuesta como una cadena
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>(responseBody);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        // Retornar.
+        return Content;
 
     }
 
@@ -64,43 +38,17 @@ public static class Profiles
     public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string token)
     {
 
-        // Crear HttpClient
-        using var httpClient = new HttpClient();
+        // Cliente HTTP.
+        Client client = Service.GetClient("profile/login/token");
 
-        // ApiServer de la solicitud GET
-        string url = ApiServer.PathURL("profile/login/token");
+        // Params.
+        client.AddParameter("token", token);
 
+        // Resultado.
+        var Content = await client.Get<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>();
 
-        url = Web.AddParameters(url, new(){
-            {"token", token }
-        });
-
-
-        try
-        {
-
-            // Hacer la solicitud GET
-            var response = await httpClient.GetAsync(url);
-
-            // Leer la respuesta como una cadena
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonSerializer.Deserialize<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>>(responseBody);
-
-            return obj ?? new();
-
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al hacer la solicitud GET: {e.Message}");
-        }
-
-
-        return new();
-
-
-
-
+        // Retornar.
+        return Content;
 
     }
 
