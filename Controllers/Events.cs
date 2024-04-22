@@ -49,4 +49,32 @@ public static class Events
     }
 
 
+
+    /// <summary>
+    /// Eliminar un evento.
+    /// </summary>
+    /// <param name="id">Id del evento.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ResponseBase> Delete(int id, string token)
+    {
+
+        // Cliente HTTP.
+        Client client = Service.GetClient("events");
+
+        // Headers.
+        client.AddHeader("token", token);
+
+        // Id del evento.
+        client.AddParameter("id", id);
+
+        // Resultado.
+        var Content = await client.Delete<ResponseBase>();
+
+        // Retornar.
+        return Content;
+
+    }
+
+
+
 }
