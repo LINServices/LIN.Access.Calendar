@@ -77,4 +77,28 @@ public static class Events
 
 
 
+    /// <summary>
+    /// Actualizar un evento.
+    /// </summary>
+    /// <param name="modelo">Modelo del evento.</param>
+    /// <param name="token">Token de acceso.</param>
+    public async static Task<ResponseBase> Update(EventModel modelo, string token)
+    {
+
+        // Cliente HTTP.
+        Client client = Service.GetClient("events");
+
+        // Headers.
+        client.AddHeader("token", token);
+
+        // Resultado.
+        var Content = await client.Patch<ResponseBase>(modelo);
+
+        // Retornar.
+        return Content;
+
+    }
+
+
+
 }
