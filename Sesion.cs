@@ -1,30 +1,30 @@
-﻿using LIN.Access.Calendar.Controllers;
-using LIN.Types.Cloud.Identity.Models;
-
-namespace LIN.Access.Calendar;
-
+﻿namespace LIN.Access.Calendar;
 
 public sealed class Session
 {
 
-
+    /// <summary>
+    /// Token de acceso.
+    /// </summary>
     public string Token { get; set; }
 
 
     /// <summary>
-    /// Información del usuario
+    /// Información del usuario.
     /// </summary>
-    public ProfileModel Informacion { get; private set; } = new();
+    public ProfileModel Information { get; private set; } = new();
 
 
     /// <summary>
-    /// Información del usuario
+    /// Cuenta de usuario.
     /// </summary>
     public AccountModel Account { get; private set; } = new();
 
 
+    /// <summary>
+    /// Token de identidad.
+    /// </summary>
     public string AccountToken { get; set; }
-
 
 
     /// <summary>
@@ -33,13 +33,10 @@ public sealed class Session
     public static bool IsAccountOpen { get => Instance.Account.Id > 0; }
 
 
-
     /// <summary>
     /// Si la sesión es activa
     /// </summary>
-    public static bool IsOpen { get => Instance.Informacion.Id > 0; }
-
-
+    public static bool IsOpen { get => Instance.Information.Id > 0; }
 
 
     /// <summary>
@@ -60,7 +57,7 @@ public sealed class Session
 
 
         // Datos de la instancia
-        Instance.Informacion = response.Model.Profile;
+        Instance.Information = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
@@ -87,9 +84,8 @@ public sealed class Session
         if (response.Response != Responses.Success)
             return (null, response.Response);
 
-
         // Datos de la instancia
-        Instance.Informacion = response.Model.Profile;
+        Instance.Information = response.Model.Profile;
         Instance.Account = response.Model.Account;
 
         Instance.Token = response.Token;
@@ -100,20 +96,14 @@ public sealed class Session
     }
 
 
-
-
     /// <summary>
     /// Cierra la sesión
     /// </summary>
     public static void CloseSession()
     {
-        Instance.Informacion = new();
+        Instance.Information = new();
         Instance.Account = new();
     }
-
-
-
-
 
 
     //==================== Singleton ====================//
@@ -123,7 +113,7 @@ public sealed class Session
 
     private Session()
     {
-        Informacion = new();
+        Information = new();
     }
 
 

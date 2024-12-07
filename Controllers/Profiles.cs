@@ -1,16 +1,13 @@
 ﻿namespace LIN.Access.Calendar.Controllers;
 
-
 public static class Profiles
 {
 
-
     /// <summary>
-    /// Iniciar sesión
+    /// Iniciar sesión.
     /// </summary>
-    /// <param name="cuenta">Cuenta</param>
-    /// <param name="password">Contraseña</param>
-    /// <param name="app">App de contexto</param>
+    /// <param name="cuenta">Usuario.</param>
+    /// <param name="password">Contraseña.</param>
     public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string cuenta, string password)
     {
 
@@ -30,9 +27,8 @@ public static class Profiles
     }
 
 
-
     /// <summary>
-    /// Login
+    /// Iniciar sesión.
     /// </summary>
     /// <param name="token">Token de acceso</param>
     public async static Task<ReadOneResponse<Types.Cloud.Identity.Abstracts.AuthModel<ProfileModel>>> Login(string token)
@@ -51,7 +47,5 @@ public static class Profiles
         return Content;
 
     }
-
-
 
 }

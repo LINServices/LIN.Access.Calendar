@@ -1,22 +1,25 @@
 ﻿namespace LIN.Access.Calendar;
 
-
-public class Build
+public static class Build
 {
 
+    /// <summary>
+    /// Autenticación de la aplicación.
+    /// </summary>
     internal static string Application { get; set; } = string.Empty;
 
-    public static void SetAuth(string app)
-    {
-        Application = app;
-    }
 
-
-    public static void Init(string? url = null)
+    /// <summary>
+    /// Utilizar LIN Authentication.
+    /// </summary>
+    /// <param name="app">Aplicación.</param>
+    /// <param name="url">Ruta.</param>
+    public static IServiceCollection AddCalendarService(this IServiceCollection service, string? url = null, string? app = null)
     {
         Service._Service = new();
         Service._Service.SetDefault(url ?? "https://api.calendar.linplatform.com/");
-        //Service._Service.SetDefault(url ?? "http://localhost:5253/");
+        Application = app ?? "default";
+        return service;
     }
 
 }

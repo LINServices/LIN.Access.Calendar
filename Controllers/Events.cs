@@ -1,14 +1,13 @@
 ﻿namespace LIN.Access.Calendar.Controllers;
 
-
 public static class Events
 {
 
-
     /// <summary>
-    /// Crear un contacto.
+    /// Crear un evento.
     /// </summary>
     /// <param name="token">Token de acceso.</param>
+    /// <param name="modelo">Modelo.</param>
     public async static Task<CreateResponse> Create(string token, EventModel modelo)
     {
 
@@ -26,11 +25,10 @@ public static class Events
     }
 
 
-
     /// <summary>
-    /// Obtiene los contactos asociados a un perfil.
+    /// Obtener los eventos asociados.
     /// </summary>
-    /// <param name="token">Token de acceso</param>
+    /// <param name="token">Token de acceso.</param>
     public async static Task<ReadAllResponse<EventModel>> ReadAll(string token)
     {
 
@@ -47,7 +45,6 @@ public static class Events
         return Content;
 
     }
-
 
 
     /// <summary>
@@ -76,7 +73,6 @@ public static class Events
     }
 
 
-
     /// <summary>
     /// Actualizar un evento.
     /// </summary>
@@ -98,7 +94,5 @@ public static class Events
         return Content;
 
     }
-
-
 
 }
