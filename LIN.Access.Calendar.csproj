@@ -7,7 +7,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>$(AssemblyName)</Title>
 		<Authors>LIN Platform</Authors>
-		<Version>1.4</Version>
+		<Version>4.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,4 +19,6 @@
 	</ItemGroup>
 
 </Project>
+
+
 
