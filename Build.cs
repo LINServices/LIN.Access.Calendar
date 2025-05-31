@@ -17,7 +17,7 @@ public static class Build
     public static IServiceCollection AddCalendarService(this IServiceCollection service, string? url = null, string? app = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault(url ?? "https://api.calendar.linplatform.com/");
+        Service._Service.SetDefault(url ?? "https://calendar.api.linplatform.com/");
         Application = app ?? "default";
         return service;
     }
