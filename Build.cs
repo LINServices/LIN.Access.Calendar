@@ -8,7 +8,6 @@ public static class Build
     /// </summary>
     internal static string Application { get; set; } = string.Empty;
 
-
     /// <summary>
     /// Utilizar LIN Authentication.
     /// </summary>
@@ -17,7 +16,7 @@ public static class Build
     public static IServiceCollection AddCalendarService(this IServiceCollection service, string? url = null, string? app = null)
     {
         Service._Service = new();
-        Service._Service.SetDefault(url ?? "https://calendar.api.linplatform.com/");
+        Service._Service.SetDefault(url ?? "https://api.linplatform.com/Calendar/");
         Application = app ?? "default";
         return service;
     }

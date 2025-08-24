@@ -1,4 +1,6 @@
-﻿namespace LIN.Access.Calendar;
+﻿using LIN.Types.Cloud.Identity.Models.Identities;
+
+namespace LIN.Access.Calendar;
 
 public sealed class Session
 {
